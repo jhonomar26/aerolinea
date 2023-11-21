@@ -36,35 +36,36 @@ class Player(models.Model):
 
 class Aeropuerto(models.Model):
     """  Aeropuertos  """
-    codigo = models.IntegerField(max_length=3, unique=True)
+    codigo = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=100)
     ciudad = models.CharField(max_length=100)
     foto_aeropuerto = models.ImageField(upload_to='foto_aeropuerto/')
 
     def __str__(self):
-        return self.codigo
+        return self.nombre
 
 class Vuelo(models.Model):
     """  Vuelos """
-    numero_vuelo = models.IntegerField(max_length=5, unique=True)
+    numero_vuelo = models.IntegerField(unique=True)
     origen = models.CharField(max_length=100)
     destino = models.CharField(max_length=100)
-    cod_aeropuerto = models.ForeignKey(Aeropuerto, on_delete=models.CASCADE)
+    cod_aeropuerto = models.ForeignKey(Aeropuerto, on_delete=models.PROTECT)
 
-    
+   # def __int__(self):
+       # return self.numero_vuelo
     def __str__(self):
-        return self.numero_vuelo
+        return self.origen + self.destino
 
 class Pasajero(models.Model):
     """  Pasajeros  """
-    codigo_pasajero = models.IntegerField()
+    codigo_pasajero = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     celular = models.IntegerField()
     correo = models.CharField(max_length=100)
-    num_vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
+    num_vuelo = models.ForeignKey(Vuelo, on_delete=models.PROTECT)
 
 
    
     def __str__(self):
-        return self.codigo_pasajero
+        return self.nombre
