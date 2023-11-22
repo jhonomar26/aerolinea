@@ -1,25 +1,26 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block section %}
-    <h2>{{ object.name }}</h2>
-    <hr>
+   <h2>
+     <p>Bienvenido, está en la sección de Aeropuertos </p>  {{ object.nombre }} <p> de la ciudad de </p> {{ object.ciudad }}
+       {% if object.aeropuerto_id %}
+         ( <a href="{% url "aeropuerto-detail" object.aeropuerto_id %}">
+             {{ object.aeropuerto }}
+           </a> )
+       {% endif %}
+    </h2>
+    <a href="{% url "aeropuerto-update" object.id %}">edit</a>
+    <a href="{% url "aeropuerto-delete" object.id %}">delete</a> 
+    <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
+   <hr>
 {% endblock section %}
 
 {% block maincontent %}
-  <div>
-     <table border="1px">
-      <tr>
-          {% for p in object.get_vuelos.all %}
-             <td>
-               <div>{{ p.nombre }} {{ p.apellido }}</div>
-               <div>
-                  <a href="{% url "vuelo-detail" p.id %}">
-                     <img src="{% static p.photo.url %}" style="width:170px;height:200px"/>
-                  </a>
-               </div>
-             </td>
-           {% endfor %}
-       </tr> 
-      </table>
-   </div>
-{% endblock maincontent %}
+<div>
+ <div>
+     <img src="{% static object.foto_aeropuerto.url %}" style="width:250px;height:330px" />
+ </div>
+</div>
+{% endblock maincontent %} 

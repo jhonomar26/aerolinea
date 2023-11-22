@@ -26,6 +26,13 @@ urlpatterns = [
     path('pasajero/', views.PasajeroListView.as_view(), name='pasajero-list'),
     path('pasajero/<int:pk>/detail/', views.PasajeroDetailView.as_view(), name='pasajero-detail'),
 
+ # Update aeropuerto 
+    path('aeropuerto/<int:pk>/update/',views.AeropuertoUpdate.as_view(),name='aeropuerto-update'), 
+    #Create aeropuerto 
+    path('aeropuerto/create/', views.AeropuertoCreate.as_view(), name='aeropuerto-create'),
+    #Delete aeropuerto 
+    path('aeropuerto/<int:pk>/delete/', views.AeropuertoDelete.as_view(), name='aeropuerto-delete'),
+    
     # Update vuelo 
     path('vuelo/<int:pk>/update/',views.VueloUpdate.as_view(),name='vuelo-update'), 
     #Create vuelo 

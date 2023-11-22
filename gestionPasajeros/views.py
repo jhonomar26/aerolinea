@@ -22,6 +22,18 @@ class PasajeroListView(ListView):
 class PasajeroDetailView(DetailView):
     model = Pasajero
 
+class AeropuertoUpdate(UpdateView):
+    model = Aeropuerto
+    fields = '__all__' 
+
+class AeropuertoCreate(CreateView):
+    model = Aeropuerto
+    fields = '__all__'
+
+class AeropuertoDelete(DeleteView):
+    model = Aeropuerto
+    success_url = reverse_lazy('aeropuerto-list')
+
 class VueloUpdate(UpdateView):
     model = Vuelo
     fields = '__all__' 
