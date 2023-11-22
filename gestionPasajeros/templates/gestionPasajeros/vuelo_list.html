@@ -17,14 +17,14 @@
                     </div>
                     <div class="panel-body" align="center">
                         <a href="{% url "vuelo-detail" p.id %}">
-                            <img src="{% static p.photo.url %}" style="width:170px;height:200px;"/>
                         </a>
                     </div>
                     <div class="panel-footer">
                         {% if p.comment %}
                             {{ p.comment }}
                         {% else %}
-                            <a href="{% url "vuelo-update" p.id %}">edit comments</a>
+                            <a href="{% url "vuelo-update" p.id %}">editar</a>
+                            <a href="{% url "vuelo-delete" p.id %}">eliminar</a>
                         {% endif %}
                     </div>
                 </div>

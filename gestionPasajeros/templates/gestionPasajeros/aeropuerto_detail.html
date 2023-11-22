@@ -13,7 +13,7 @@
     </h2>
     <a href="{% url "aeropuerto-update" object.id %}">edit</a>
     <a href="{% url "aeropuerto-delete" object.id %}">delete</a> 
-    <a href="{% url "aeropuerto" }">create</a>
+    <a href="{% url "aeropuerto-create" %}">create</a>
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
    <hr>
 {% endblock section %}

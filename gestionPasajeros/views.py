@@ -29,6 +29,7 @@ class AeropuertoUpdate(UpdateView):
 class AeropuertoCreate(CreateView):
     model = Aeropuerto
     fields = '__all__'
+    
 
 class AeropuertoDelete(DeleteView):
     model = Aeropuerto

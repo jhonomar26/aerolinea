@@ -34,33 +34,66 @@
             <li class="nav-header">{% block nav_heading %}MENÚ PRINCIPAL{% endblock %}</li>
 
             {% block nav_links %}
-                <li class="nav-item">
-                    <a href="{% url 'aeropuerto-list'%}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i> 
-                        <p>Aeropuertos</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                        <a href="{% url 'vuelo-list'%}" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i> 
-                            <p>Vuelos</p>
+               
+            <li class="nav-item has-tree-view ">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-plane"></i> <p>Aeropuertos</p>
+                    <p><i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview menu-open">
+                        <li class="nav-item">
+                                <a href="{% url 'aeropuerto-create'%}" class="nav-link">
+                                    <i class="fas fa-plus"></i> Crear
+                                </a>
+                            </li>
+                    <li class="nav-item">
+                        <a href="{% url 'aeropuerto-list'%}" class="nav-link active">
+                            <i class="fas fa-plane"></i> Listar Aeropuertos
                         </a>
-                </li>
+                    </li>
+                </ul>
+            </li>
+                
+
                 <li class="nav-item has-tree-view ">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-object-group"></i> <p>Pasajeros</p>
+                        <i class="fas fa-plane text-blue"></i> <p>Vuelos</p>
                         <p><i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview menu-open">
                             <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="nav-icon fas fa-circle"></i> Crear
+                                    <a href="{% url 'vuelo-create'%}" class="nav-link">
+                                        <i class="fas fa-plus"></i> Crear
                                     </a>
                                 </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-user"></i> Another link
+                            <a href="{% url 'vuelo-list'%}" class="nav-link active">
+                                <i class="nav-icon fas fa-user"></i> Listar Vuelos
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+                <li class="nav-item has-tree-view ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i> <p>Pasajeros</p>
+                        <p><i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview menu-open">
+                            <li class="nav-item">
+                                    <a href="{% url 'pasajero-create'%}" class="nav-link">
+                                        <i class="fas fa-plus"></i> Crear
+                                    </a>
+                                </li>
+                        <li class="nav-item">
+                            <a href="{% url 'pasajero-list'%}" class="nav-link active">
+                                <i class="nav-icon fas fa-user"></i> Listar Pasajeros
                             </a>
                         </li>
                     </ul>
