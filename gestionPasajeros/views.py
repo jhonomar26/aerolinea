@@ -20,6 +20,7 @@ class PasajeroListView(ListView):
     model = Pasajero
 
 class PasajeroDetailView(DetailView):
+<<<<<<< HEAD
     model = Pasajero
 
 class AeropuertoUpdate(UpdateView):
@@ -59,3 +60,6 @@ class PasajeroCreate(CreateView):
 class PasajeroDelete(DeleteView):
     model = Pasajero
     success_url = reverse_lazy('pasajero-list')
+=======
+    model = Pasajero
+>>>>>>> cf9367b528c7b1c92845569fa53d7a62b1b0716b
