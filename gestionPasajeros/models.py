@@ -49,12 +49,12 @@ class Vuelo(models.Model):
     numero_vuelo = models.IntegerField(unique=True)
     origen = models.CharField(max_length=100)
     destino = models.CharField(max_length=100)
-    cod_aeropuerto = models.ForeignKey(Aeropuerto, on_delete=models.PROTECT)
+    cod_aeropuerto = models.ForeignKey(Aeropuerto, on_delete=models.PROTECT, related_name='get_vuelos')
 
    # def __int__(self):
        # return self.numero_vuelo
     def __str__(self):
-        return self.origen + self.destino
+        return self.origen + " " + self.destino
 
 class Pasajero(models.Model):
     """  Pasajeros  """
@@ -63,7 +63,7 @@ class Pasajero(models.Model):
     apellido = models.CharField(max_length=50)
     celular = models.IntegerField()
     correo = models.CharField(max_length=100)
-    num_vuelo = models.ForeignKey(Vuelo, on_delete=models.PROTECT)
+    num_vuelo = models.ForeignKey(Vuelo, on_delete=models.PROTECT, related_name='get_pasajeros')
 
 
    

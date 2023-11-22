@@ -21,3 +21,29 @@ class PasajeroListView(ListView):
 
 class PasajeroDetailView(DetailView):
     model = Pasajero
+
+class VueloUpdate(UpdateView):
+    model = Vuelo
+    fields = '__all__' 
+
+class VueloCreate(CreateView):
+    model = Vuelo
+    fields = '__all__'
+
+class VueloDelete(DeleteView):
+    model = Vuelo
+    success_url = reverse_lazy('vuelo-list')
+
+
+
+class PasajeroUpdate(UpdateView):
+    model = Pasajero
+    fields = '__all__' 
+
+class PasajeroCreate(CreateView):
+    model = Pasajero
+    fields = '__all__'
+
+class PasajeroDelete(DeleteView):
+    model = Pasajero
+    success_url = reverse_lazy('pasajero-list')

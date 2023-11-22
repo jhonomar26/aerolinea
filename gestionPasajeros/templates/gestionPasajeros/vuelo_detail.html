@@ -1,1 +1,26 @@
-{{ object.numero_vuelo }} - {{ object.origen }} - {{ object.destino }}
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+   <h2>
+       {{ object.origen }} {{ object.destino }}
+       {% if object.vuelo_id %}
+         ( <a href="{% url "vuelo-detail" object.vuelo_id %}">
+             {{ object.vuelo }}
+           </a> )
+       {% endif %}
+    </h2>
+    <a href="{% url "vuelo-update" object.id %}">edit</a>
+    <a href="{% url "vuelo-delete" object.id %}">delete</a> 
+    <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
+   <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<div>
+ <div>
+     <img src="{% static object.photo.url %}" style="width:250px;height:330px" />
+ </div>
+</div>
+{% endblock maincontent %} 

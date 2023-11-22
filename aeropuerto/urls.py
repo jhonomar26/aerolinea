@@ -26,4 +26,5 @@ urlpatterns = [
     path('pasajero/', views.PasajeroListView.as_view(), name='pasajero-list'),
     path('pasajero/<int:pk>/detail/', views.PasajeroDetailView.as_view(), name='pasajero-detail'),
 
+
 ]

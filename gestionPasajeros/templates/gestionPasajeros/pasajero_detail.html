@@ -1,1 +1,26 @@
-{{ object.codigo_pasajero }} - {{ object.nombre }} - {{ object.apellido }}
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+   <h2>
+       {{ object.nombre }} {{ object.apellido }}
+       {% if object.pasajero_id %}
+         ( <a href="{% url "pasajero-detail" object.pasajero_id %}">
+             {{ object.pasajero }}
+           </a> )
+       {% endif %}
+    </h2>
+    <a href="{% url "pasajero-update" object.id %}">edit</a>
+    <a href="{% url "pasajero-delete" object.id %}">delete</a> 
+    <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
+   <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<div>
+ <div>
+     <img src="{% static object.photo.url %}" style="width:250px;height:330px" />
+ </div>
+</div>
+{% endblock maincontent %} 
