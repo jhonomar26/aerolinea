@@ -26,5 +26,20 @@ urlpatterns = [
     path('pasajero/', views.PasajeroListView.as_view(), name='pasajero-list'),
     path('pasajero/<int:pk>/detail/', views.PasajeroDetailView.as_view(), name='pasajero-detail'),
 
+    # Update vuelo 
+    path('vuelo/<int:pk>/update/',views.VueloUpdate.as_view(),name='vuelo-update'), 
+    #Create vuelo 
+    path('vuelo/create/', views.VueloCreate.as_view(), name='vuelo-create'),
+    #Delete vuelo 
+    path('vuelo/<int:pk>/delete/', views.VueloDelete.as_view(), name='vuelo-delete'),
+    
+
+    # Update pasajero
+    path('pasajero/<int:pk>/update/',views.PasajeroUpdate.as_view(),name='pasajero-update'), 
+    #Create pasajero
+    path('pasajero/create/', views.PasajeroCreate.as_view(), name='pasajero-create'),
+    #Delete pasajero
+    path('pasajero/<int:pk>/delete/', views.PasajeroDelete.as_view(), name='pasajero-delete'),
+    
 
 ]
