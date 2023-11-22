@@ -4,7 +4,7 @@
 
 {% block section %}
    <h2>
-       {{ object.nombre }} {{ object.apellido }}
+    <p>Pasajero: </p>   {{ object.nombre }} {{ object.apellido }}
        {% if object.pasajero_id %}
          ( <a href="{% url "pasajero-detail" object.pasajero_id %}">
              {{ object.pasajero }}

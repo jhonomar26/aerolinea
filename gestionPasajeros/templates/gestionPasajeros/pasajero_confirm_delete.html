@@ -1,0 +1,8 @@
+{% extends 'base.html' %} 
+{% block maincontent %}
+ <form action=""method="post">{% csrf_token %}
+     <p>Eliminar Pasajero "{{ object.nombre }} {{ object.apellido }}"?</p>
+     <input type="submit" value="Confirm" />
+     <a class='btn'href="{% url 'pasajero-list' %}">Cancel</a>
+ </form>
+{% endblock maincontent %}

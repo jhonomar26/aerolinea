@@ -41,8 +41,11 @@ class Aeropuerto(models.Model):
     ciudad = models.CharField(max_length=100)
     foto_aeropuerto = models.ImageField(upload_to='foto_aeropuerto/')
 
-    def __str__(self):
-        return self.nombre
+    def __int__(self):
+        return self.codigo
+    
+   # def __str__(self):
+    #    return self.nombre
 
 class Vuelo(models.Model):
     """  Vuelos """
@@ -51,10 +54,14 @@ class Vuelo(models.Model):
     destino = models.CharField(max_length=100)
     cod_aeropuerto = models.ForeignKey(Aeropuerto, on_delete=models.PROTECT, related_name='get_vuelos')
 
-   # def __int__(self):
-       # return self.numero_vuelo
-    def __str__(self):
-        return self.origen + " " + self.destino
+    def __int__(self):
+        return self.numero_vuelo
+   # def __str__(self):
+      #  return self.origen + " " + self.destino
+
+    def get_absolute_url(self):
+        return reverse('vuelo-list')
+
 
 class Pasajero(models.Model):
     """  Pasajeros  """
@@ -69,3 +76,6 @@ class Pasajero(models.Model):
    
     def __str__(self):
         return self.nombre
+    
+    def get_absolute_url(self):
+        return reverse('pasajero-list')

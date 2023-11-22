@@ -4,7 +4,7 @@
 
 {% block section %}
    <h2>
-       {{ object.origen }} {{ object.destino }}
+     <p>Vuelo de </p>  {{ object.origen }} <p> a </p> {{ object.destino }}
        {% if object.vuelo_id %}
          ( <a href="{% url "vuelo-detail" object.vuelo_id %}">
              {{ object.vuelo }}
