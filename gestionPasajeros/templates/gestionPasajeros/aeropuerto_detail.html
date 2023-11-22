@@ -4,7 +4,7 @@
 
 {% block section %}
    <h2>
-     <p>Bienvenido, está en la sección de Aeropuertos </p>  {{ object.nombre }} <p> de la ciudad de </p> {{ object.ciudad }}
+     <p>Bienvenido, está en la sección de Aeropuertos </p> <p>  {{ object.nombre }} de la ciudad de  {{ object.ciudad }} </p>
        {% if object.aeropuerto_id %}
          ( <a href="{% url "aeropuerto-detail" object.aeropuerto_id %}">
              {{ object.aeropuerto }}
@@ -13,6 +13,7 @@
     </h2>
     <a href="{% url "aeropuerto-update" object.id %}">edit</a>
     <a href="{% url "aeropuerto-delete" object.id %}">delete</a> 
+    <a href="{% url "aeropuerto" }">create</a>
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
    <hr>
 {% endblock section %}

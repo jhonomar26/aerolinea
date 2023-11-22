@@ -71,7 +71,7 @@ class Pasajero(models.Model):
     celular = models.IntegerField()
     correo = models.CharField(max_length=100)
     num_vuelo = models.ForeignKey(Vuelo, on_delete=models.PROTECT, related_name='get_pasajeros')
-
+    
 
    
     def __str__(self):

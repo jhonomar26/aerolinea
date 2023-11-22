@@ -4,7 +4,7 @@
 
 {% block section %}
    <h2>
-    <p>Pasajero: </p>   {{ object.nombre }} {{ object.apellido }}
+    <p>Pasajero:    {{ object.nombre }} {{ object.apellido }} </p>
        {% if object.pasajero_id %}
          ( <a href="{% url "pasajero-detail" object.pasajero_id %}">
              {{ object.pasajero }}
@@ -12,15 +12,14 @@
        {% endif %}
     </h2>
     <a href="{% url "pasajero-update" object.id %}">edit</a>
-    <a href="{% url "pasajero-delete" object.id %}">delete</a> 
+    <a href="{% url "pasajero-delete" object.id %}">delete</a>
+    <a href="{% url "pasajero-create" }">create</a> 
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
    <hr>
 {% endblock section %}
 
 {% block maincontent %}
 <div>
- <div>
-     <img src="{% static object.photo.url %}" style="width:250px;height:330px" />
- </div>
+ 
 </div>
 {% endblock maincontent %} 
