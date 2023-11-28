@@ -4,6 +4,11 @@ from django.views.generic import CreateView, DeleteView, UpdateView, ListView, D
 from gestionPasajeros.models import Aeropuerto, Vuelo, Pasajero
 from django.shortcuts import render
 # Create your views here.
+
+def home(request):
+     return render(request,'c:/aereo/gestionPasajeros/templates/gestionPasajeros/home.html')
+
+
 class AeropuertoListView(ListView):
     model = Aeropuerto
 

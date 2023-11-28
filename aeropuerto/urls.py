@@ -21,6 +21,8 @@ from gestionPasajeros import views
 from django.urls import path
 from django.views import *
 urlpatterns = [
+    # ruta home
+    path('',views.home, name='ruta-home'),
     path('admin/', admin.site.urls),
     path('aeropuerto/', views.AeropuertoListView.as_view(), name='aeropuerto-list'),
     path('aeropuerto/<int:pk>/detail/', views.AeropuertoDetailView.as_view(), name='aeropuerto-detail'),
