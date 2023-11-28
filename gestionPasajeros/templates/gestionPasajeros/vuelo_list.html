@@ -25,6 +25,8 @@
                         {% else %}
                             <a href="{% url "vuelo-update" p.id %}">editar</a>
                             <a href="{% url "vuelo-delete" p.id %}">eliminar</a>
+                            <a href="{% url "vuelo-detail" p.id %}">detalles</a>
+
                         {% endif %}
                     </div>
                 </div>
