@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from gestionPasajeros import views
+
+from django.urls import path
+from django.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('aeropuerto/', views.AeropuertoListView.as_view(), name='aeropuerto-list'),
@@ -25,6 +28,12 @@ urlpatterns = [
     path('vuelo/<int:pk>/detail/', views.VueloDetailView.as_view(), name='vuelo-detail'),
     path('pasajero/', views.PasajeroListView.as_view(), name='pasajero-list'),
     path('pasajero/<int:pk>/detail/', views.PasajeroDetailView.as_view(), name='pasajero-detail'),
+    # ruta crear aeropuerto
+    path('aeropuerto/crear/', views.crear_aeropuerto, name='crear-aeropuerto'),
+    # ruta crear vuelo
+    path('vuelo/crear/',views.crear_vuelo, name='crear-vuelo'),
+    # ruta crear pasajero
+    path('pasajero/crear/',views.crear_pasajero, name='crear-pasajero'),
 
  # Update aeropuerto 
     path('aeropuerto/<int:pk>/update/',views.AeropuertoUpdate.as_view(),name='aeropuerto-update'), 
