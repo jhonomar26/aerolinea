@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Listado de Aeropuertos</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Ciudad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for aeropuerto in object_list %}
+          <tr>
+            <td>{{ aeropuerto.codigo }}</td>
+            <td>{{ aeropuerto.nombre }}</td>
+            <td>{{ aeropuerto.ciudad }}</td>
+            
+            <td>
+              <a href="{% url 'aeropuerto-detail' aeropuerto.pk %}" class="btn btn-info btn-sm">Detalles</a>
+              <a href="{% url 'aeropuerto-update' aeropuerto.pk %}" class="btn btn-warning btn-sm">Editar</a>
+              <a href="{% url 'aeropuerto-delete' aeropuerto.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

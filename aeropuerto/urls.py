@@ -20,44 +20,67 @@ from gestionPasajeros import views
 
 from django.urls import path
 from django.views import *
+
+
 urlpatterns = [
     # ruta home
-    path('',views.home, name='ruta-home'),
-    path('admin/', admin.site.urls),
-    path('aeropuerto/', views.AeropuertoListView.as_view(), name='aeropuerto-list'),
-    path('aeropuerto/<int:pk>/detail/', views.AeropuertoDetailView.as_view(), name='aeropuerto-detail'),
-    path('vuelo/', views.VueloListView.as_view(), name='vuelo-list'),
-    path('vuelo/<int:pk>/detail/', views.VueloDetailView.as_view(), name='vuelo-detail'),
-    path('pasajero/', views.PasajeroListView.as_view(), name='pasajero-list'),
-    path('pasajero/<int:pk>/detail/', views.PasajeroDetailView.as_view(), name='pasajero-detail'),
+    path("", views.home, name="ruta-home"),
+    path("admin/", admin.site.urls),
     # ruta crear aeropuerto
-    path('aeropuerto/crear/', views.crear_aeropuerto, name='crear-aeropuerto'),
     # ruta crear vuelo
-    path('vuelo/crear/',views.crear_vuelo, name='crear-vuelo'),
     # ruta crear pasajero
-    path('pasajero/crear/',views.crear_pasajero, name='crear-pasajero'),
-
- # Update aeropuerto 
-    path('aeropuerto/<int:pk>/update/',views.AeropuertoUpdate.as_view(),name='aeropuerto-update'), 
-    #Create aeropuerto 
-    path('aeropuerto/create/', views.AeropuertoCreate.as_view(), name='aeropuerto-create'),
-    #Delete aeropuerto 
-    path('aeropuerto/<int:pk>/delete/', views.AeropuertoDelete.as_view(), name='aeropuerto-delete'),
-    
-    # Update vuelo 
-    path('vuelo/<int:pk>/update/',views.VueloUpdate.as_view(),name='vuelo-update'), 
-    #Create vuelo 
-    path('vuelo/create/', views.VueloCreate.as_view(), name='vuelo-create'),
-    #Delete vuelo 
-    path('vuelo/<int:pk>/delete/', views.VueloDelete.as_view(), name='vuelo-delete'),
-    
-
+    # Update aeropuerto
+    path(
+        "aeropuerto/<int:pk>/update/",
+        views.AeropuertoUpdate.as_view(),
+        name="aeropuerto-update",
+    ),
+    # Create aeropuerto
+    path("aeropuerto/create/", views.crear_aeropuerto, name="aeropuerto-create"),
+    # Delete aeropuerto
+    path("aeropuerto/", views.AeropuertoListView.as_view(), name="aeropuerto-list"),
+    path(
+        "aeropuerto/<int:pk>/detail/",
+        views.AeropuertoDetailView.as_view(),
+        name="aeropuerto-detail",
+    ),
+    path("aeropuerto/crear/", views.crear_aeropuerto, name="crear-aeropuerto"),
+    path(
+        "aeropuerto/<int:pk>/delete/",
+        views.AeropuertoDelete.as_view(),
+        name="aeropuerto-delete",
+    ),
+    # Update vuelo
+    path("vuelo/<int:pk>/update/", views.VueloUpdate.as_view(), name="vuelo-update"),
+    # Create vuelo
+    path("vuelo/create/", views.crear_vuelo, name="vuelo-create"),
+    # Delete vuelo
+    path("vuelo/<int:pk>/delete/", views.VueloDelete.as_view(), name="vuelo-delete"),
+    path("vuelo/", views.VueloListView.as_view(), name="vuelo-list"),
+    path(
+        "vuelo/<int:pk>/detail/", views.VueloDetailView.as_view(), name="vuelo-detail"
+    ),
+    path("vuelo/crear/", views.crear_vuelo, name="crear-vuelo"),
     # Update pasajero
-    path('pasajero/<int:pk>/update/',views.PasajeroUpdate.as_view(),name='pasajero-update'), 
-    #Create pasajero
-    path('pasajero/create/', views.PasajeroCreate.as_view(), name='pasajero-create'),
-    #Delete pasajero
-    path('pasajero/<int:pk>/delete/', views.PasajeroDelete.as_view(), name='pasajero-delete'),
-    
-
+    path(
+        "pasajero/<int:pk>/update/",
+        views.PasajeroUpdate.as_view(),
+        name="pasajero-update",
+    ),
+    # Create pasajero
+    path("pasajero/create/", views.PasajeroCreate.as_view(), name="pasajero-create"),
+    # Delete pasajero
+    path(
+        "pasajero/<int:pk>/delete/",
+        views.PasajeroDelete.as_view(),
+        name="pasajero-delete",
+    ),
+    path("pasajero/crear/", views.crear_pasajero, name="crear-pasajero"),
+    # Pasajero
+    path("pasajero/", views.PasajeroListView.as_view(), name="pasajero-list"),
+    path(
+        "pasajero/<int:pk>/detail/",
+        views.PasajeroDetailView.as_view(),
+        name="pasajero-detail",
+    ),
 ]

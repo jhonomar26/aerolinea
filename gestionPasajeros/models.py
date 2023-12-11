@@ -31,51 +31,63 @@ class Player(models.Model):
         return self.first_name + " " + self.last_name
     
     """
-    
-      # ----------------------------------------------------------------
+# ----------------------------------------------------------------
+
 
 class Aeropuerto(models.Model):
-    """  Aeropuertos  """
+    """Aeropuertos"""
+
     codigo = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=100)
     ciudad = models.CharField(max_length=100)
-    foto_aeropuerto = models.ImageField(upload_to='foto_aeropuerto/')
+    foto_aeropuerto = models.ImageField(upload_to="foto_aeropuerto/")
 
     def __int__(self):
         return self.codigo
+
+    def __str__(self):
+        return self.nombre
     
-   # def __str__(self):
-    #    return self.nombre
+    def get_absolute_url(self):
+        return reverse("aeropuerto-list")
+    
+    
+
 
 class Vuelo(models.Model):
-    """  Vuelos """
+    """Vuelos"""
+
     numero_vuelo = models.IntegerField(unique=True)
     origen = models.CharField(max_length=100)
     destino = models.CharField(max_length=100)
-    cod_aeropuerto = models.ForeignKey(Aeropuerto, on_delete=models.PROTECT, related_name='get_vuelos')
+    cod_aeropuerto = models.ForeignKey(
+        Aeropuerto, on_delete=models.PROTECT, related_name="get_vuelos"
+    )
 
     def __int__(self):
         return self.numero_vuelo
-   # def __str__(self):
-      #  return self.origen + " " + self.destino
+
+    def __str__(self):
+        return self.origen + " " + self.destino
 
     def get_absolute_url(self):
-        return reverse('vuelo-list')
+        return reverse("vuelo-list")
 
 
 class Pasajero(models.Model):
-    """  Pasajeros  """
+    """Pasajeros"""
+
     codigo_pasajero = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     celular = models.IntegerField()
     correo = models.CharField(max_length=100)
-    num_vuelo = models.ForeignKey(Vuelo, on_delete=models.PROTECT, related_name='get_pasajeros')
-    
+    num_vuelo = models.ForeignKey(
+        Vuelo, on_delete=models.PROTECT, related_name="get_pasajeros"
+    )
 
-   
     def __str__(self):
         return self.nombre
-    
+
     def get_absolute_url(self):
-        return reverse('pasajero-list')
+        return reverse("pasajero-list")
