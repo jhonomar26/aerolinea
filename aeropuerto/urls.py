@@ -97,6 +97,6 @@ urlpatterns = [
     #Definición de routers, rutas de los serializers que se crearon
     
     path('', include(router.urls)),
-    path('api/', include('rest_framework.urls', namespace='rest_framework')),
+   path('api/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]
