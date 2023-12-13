@@ -62,19 +62,6 @@ class AeropuertoDelete(DeleteView):
 
 # Vuelos
 
-<<<<<<< HEAD
-class VueloListView(ListView):
-    model = Vuelo
-    template_name = 'vuelo_list.html'
-    context_object_name = 'object_list'
-
-class VueloDetailView(DetailView):
-    model = Vuelo
-    template_name = 'vuelo_detail.html'
-    context_object_name = 'object_list'
-
-=======
->>>>>>> 5a49aa6911d8601beb7cc4d6b0d6e51ae8d129ae
 
 def crear_vuelo(request):
     if request.method == "POST":
