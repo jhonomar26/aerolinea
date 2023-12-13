@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Actualizar Pasajero</h2>
+    <form method="post" action="{% url 'pasajero-update' pasajero.pk %}" class="needs-validation" novalidate>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <div class="mb-3">
+        <label for="{{ form.codigo_pasajero.id_for_label }}" class="form-label">Código de Pasajero:</label>
+        {{ form.codigo_pasajero }}
+        {{ form.codigo_pasajero.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre:</label>
+        {{ form.nombre }}
+        {{ form.nombre.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.apellido.id_for_label }}" class="form-label">Apellido:</label>
+        {{ form.apellido }}
+        {{ form.apellido.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.celular.id_for_label }}" class="form-label">Celular:</label>
+        {{ form.celular }}
+        {{ form.celular.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.correo.id_for_label }}" class="form-label">Correo:</label>
+        {{ form.correo }}
+        {{ form.correo.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.num_vuelo.id_for_label }}" class="form-label">Número de Vuelo:</label>
+        {{ form.num_vuelo }}
+        {{ form.num_vuelo.errors }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+  </div>
+{% endblock %}

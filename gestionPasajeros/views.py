@@ -21,48 +21,44 @@ def home(request):
 
 class AeropuertoListView(ListView):
     model = Aeropuerto
-    template_name = 'aeropuerto_list.html'
-    context_object_name = 'object_list'
+    template_name = "aeropuerto_list.html"
+    context_object_name = "object_list"
 
 
 class AeropuertoDetailView(DetailView):
     model = Aeropuerto
-    template_name = 'aeropuerto_detail.html'
-    context_object_name = 'aeropuerto'
-
+    template_name = "aeropuerto_detail.html"
+    context_object_name = "aeropuerto"
 
 
 def crear_aeropuerto(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = AeropuertoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('aeropuerto-list')  # Redirige a la lista de aeropuertos después de crear uno nuevo
+            return redirect(
+                "aeropuerto-list"
+            )  # Redirige a la lista de aeropuertos después de crear uno nuevo
     else:
         form = AeropuertoForm()
 
-    return render(request, 'crear_aeropuerto.html', {'form': form})
+    return render(request, "crear_aeropuerto.html", {"form": form})
 
 
 # Vuelos
 
+
 def crear_vuelo(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = VueloForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('vuelo-list')  # Reemplaza 'vuelo-list' con el nombre correcto de tu vista de lista de vuelos
+            return redirect(
+                "vuelo-list"
+            )  # Reemplaza 'vuelo-list' con el nombre correcto de tu vista de lista de vuelos
     else:
         form = VueloForm()
-    return render(request, 'crear_vuelo.html', {'form': form})
-
-
-
-
-
-
-
-
+    return render(request, "crear_vuelo.html", {"form": form})
 
 
 def crear_pasajero(request):
@@ -96,6 +92,8 @@ class VueloDetailView(DetailView):
 
 class PasajeroListView(ListView):
     model = Pasajero
+    template_name = "pasajero_list.html"
+    context_object_name = "pasajeros"
 
 
 class PasajeroDetailView(DetailView):
@@ -104,24 +102,24 @@ class PasajeroDetailView(DetailView):
 
 class AeropuertoUpdate(UpdateView):
     model = Aeropuerto
-    template_name = 'aeropuerto_form.html'  # Puedes reutilizar el mismo formulario que usas para crear
-    fields = ['codigo', 'nombre', 'ciudad', 'foto_aeropuerto']
+    template_name = "aeropuerto_form.html"  # Puedes reutilizar el mismo formulario que usas para crear
+    fields = ["codigo", "nombre", "ciudad", "foto_aeropuerto"]
+
 
 class AeropuertoCreate(CreateView):
     model = Aeropuerto
     fields = "__all__"
 
+
 class AeropuertoDelete(DeleteView):
     model = Aeropuerto
-    template_name = 'aeropuerto_confirm_delete.html'
-    success_url = reverse_lazy('aeropuerto-list')
+    template_name = "aeropuerto_confirm_delete.html"
+    success_url = reverse_lazy("aeropuerto-list")
 
 
 class VueloUpdate(UpdateView):
     model = Vuelo
     fields = "__all__"
-
-
 
 
 class VueloDelete(DeleteView):
@@ -131,7 +129,10 @@ class VueloDelete(DeleteView):
 
 class PasajeroUpdate(UpdateView):
     model = Pasajero
-    fields = "__all__"
+    template_name = "pasajero_update.html"
+    form_class = PasajeroForm
+    def get_success_url(self):
+        return reverse_lazy("pasajero-detail", kwargs={"pk": self.object.pk})
 
 
 class PasajeroCreate(CreateView):

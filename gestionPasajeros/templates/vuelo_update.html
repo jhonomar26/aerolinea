@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Actualizar Vuelo</h2>
+    <form method="post" action="{% url 'vuelo-update' vuelo.pk %}" class="needs-validation" novalidate>
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="{{ form.numero_vuelo.id_for_label }}" class="form-label">Número de Vuelo:</label>
+        {{ form.numero_vuelo }}
+        <div class="invalid-feedback">{{ form.numero_vuelo.errors }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.origen.id_for_label }}" class="form-label">Origen:</label>
+        {{ form.origen }}
+        <div class="invalid-feedback">{{ form.origen.errors }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.destino.id_for_label }}" class="form-label">Destino:</label>
+        {{ form.destino }}
+        <div class="invalid-feedback">{{ form.destino.errors }}</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="{{ form.cod_aeropuerto.id_for_label }}" class="form-label">Aeropuerto:</label>
+        {{ form.cod_aeropuerto }}
+        <div class="invalid-feedback">{{ form.cod_aeropuerto.errors }}</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+  </div>
+{% endblock %}
