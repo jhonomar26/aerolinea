@@ -1,25 +1,39 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% block content %}
+  <h2>Detalles del Pasajero</h2>
 
-{% block section %}
-   <h2>
-    <p>Pasajero:    {{ object.nombre }} {{ object.apellido }} </p>
-       {% if object.pasajero_id %}
-         ( <a href="{% url "pasajero-detail" object.pasajero_id %}">
-             {{ object.pasajero }}
-           </a> )
-       {% endif %}
-    </h2>
-    <a href="{% url "pasajero-update" object.id %}">edit</a>
-    <a href="{% url "pasajero-delete" object.id %}">delete</a>
-    <a href="{% url "pasajero-create" }">create</a> 
-    <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
-   <hr>
-{% endblock section %}
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Código Pasajero:</th>
+        <td>{{ pasajero.codigo_pasajero }}</td>
+      </tr>
+      <tr>
+        <th>Nombre:</th>
+        <td>{{ pasajero.nombre }}</td>
+      </tr>
+      <tr>
+        <th>Apellido:</th>
+        <td>{{ pasajero.apellido }}</td>
+      </tr>
+      <tr>
+        <th>Celular:</th>
+        <td>{{ pasajero.celular }}</td>
+      </tr>
+      <tr>
+        <th>Correo:</th>
+        <td>{{ pasajero.correo }}</td>
+      </tr>
+      <tr>
+        <th>Número de Vuelo:</th>
+        <td>{{ pasajero.num_vuelo }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-{% block maincontent %}
-<div>
- 
-</div>
-{% endblock maincontent %} 
+  <a href="{% url 'pasajero-update' pk=pasajero.pk %}" class="btn btn-warning">Editar</a>
+  <a href="{% url 'pasajero-delete' pk=pasajero.pk %}" class="btn btn-danger">Eliminar</a>
+
+  <a href="{% url 'pasajero-list' %}" class="btn btn-primary">Volver a la lista de pasajeros</a>
+{% endblock %}

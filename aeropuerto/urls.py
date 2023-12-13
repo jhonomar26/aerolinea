@@ -45,32 +45,46 @@ urlpatterns = [
     #------------------------VUELOS-------------------------------
 
     # Update vuelo
-    path("vuelo/<int:pk>/update/", views.VueloUpdate.as_view(), name="vuelo-update"),
+    path("vuelo/<int:pk>/update/", views.VueloUpdate.as_view(template_name="vuelo_update.html"), name="vuelo-update"),
     # Create vuelo
     path("vuelo/create/", views.crear_vuelo, name="vuelo-create"),
     # Delete vuelo
-    path("vuelo/<int:pk>/delete/", views.VueloDelete.as_view(), name="vuelo-delete"),
-    #Vuelo Lista
-    path("vuelo/", views.VueloListView.as_view(), name="vuelo-list"),
-    # Vuelo Detalle
-    path("vuelo/<int:pk>/detail/", views.VueloDetailView.as_view(), name="vuelo-detail"),
-    # Vuelo Crear
+    path("vuelo/<int:pk>/delete/", views.VueloDelete.as_view(template_name="vuelo_confirm_delete.html"), name="vuelo-delete"),
+    path(
+        "vuelo/",
+        views.VueloListView.as_view(template_name="vuelo_list.html"),
+        name="vuelo-list",
+    ),
+    path(
+        "vuelo/<int:pk>/detail/", views.VueloDetailView.as_view(template_name="vuelo_detail.html"), name="vuelo-detail"
+    ),
     path("vuelo/crear/", views.crear_vuelo, name="crear-vuelo"),
 
    #-----------------------------PASAJEROS---------------------------
    
     # Update pasajero
-    path("pasajero/<int:pk>/update/", views.PasajeroUpdate.as_view(), name="pasajero-update"),
-    # Create pasajero
-
-    path("pasajero/create/", views.crear_pasajero, name="pasajero-create"),
     
+    
+    
+    path(
+        "pasajero/<int:pk>/update/",
+        views.PasajeroUpdate.as_view(template_name="pasajero_form.html"),
+        name="pasajero-update",
+    ),
+    # Create pasajero
+    path("pasajero/create/", views.PasajeroCreate.as_view(template_name="crear_pasajero.html"), name="pasajero-create"),
     # Delete pasajero
-    path("pasajero/<int:pk>/delete/", views.PasajeroDelete.as_view(), name="pasajero-delete" ),
-    # Pasajero crear
+    path(
+        "pasajero/<int:pk>/delete/",
+        views.PasajeroDelete.as_view(template_name="pasajero_confirm_delete.html"),
+        name="pasajero-delete",
+    ),
     path("pasajero/crear/", views.crear_pasajero, name="crear-pasajero"),
-    # Pasajero list
-    path("pasajero/", views.PasajeroListView.as_view(), name="pasajero-list"),
-    # Pasajero dettalle
-    path("pasajero/<int:pk>/detail/", views.PasajeroDetailView.as_view(), name="pasajero-detail"),
+    # Pasajero
+    path("pasajero/", views.PasajeroListView.as_view(template_name="pasajero_list.html"), name="pasajero-list"),
+    path(
+        "pasajero/<int:pk>/detail/",
+        views.PasajeroDetailView.as_view(template_name="pasajero_detail.html"),
+        name="pasajero-detail",
+    ),
 ]
