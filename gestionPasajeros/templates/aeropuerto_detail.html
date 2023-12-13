@@ -3,17 +3,22 @@
 {% load static %}
 
 {% block section %}
-   <h2>
-     <p>Bienvenido, está en la sección de Aeropuertos </p> <p>  {{ object.nombre }} de la ciudad de  {{ object.ciudad }} </p>
+<div class="text-center">
+  <h1>Bienvenido a la sección Detalles de los Aeropuertos </h1>
+
+</div><br>
+  
+<h2>
+     <p>  {{ object.nombre }} de la ciudad de  {{ object.ciudad }} </p>
        {% if object.aeropuerto_id %}
          ( <a href="{% url "aeropuerto-detail" object.aeropuerto_id %}">
              {{ object.aeropuerto }}
            </a> )
        {% endif %}
     </h2>
-    <a href="{% url "aeropuerto-update" object.id %}">edit</a>
-    <a href="{% url "aeropuerto-delete" object.id %}">delete</a> 
-    <a href="{% url "aeropuerto-create" %}">create</a>
+    <a class='btn btn-warning' href="{% url "aeropuerto-update" object.id %}">Editar</a>
+    <a class='btn btn-danger' href="{% url "aeropuerto-delete" object.id %}">Borrar</a> 
+    <a class='btn btn-primary' href="{% url "aeropuerto-create" %}">Crear</a>
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
    <hr>
 {% endblock section %}

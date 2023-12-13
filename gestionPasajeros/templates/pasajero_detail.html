@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Detalles del Pasajero</h2>
+<div class="text-center">
+  <h1>Bienvenido a la sección Detalles de los Pasajeros </h1> 
+
+</div><br>
+
+
 
   <table class="table">
     <tbody>
@@ -32,8 +37,8 @@
     </tbody>
   </table>
 
-  <a href="{% url 'pasajero-update' pk=pasajero.pk %}" class="btn btn-warning">Editar</a>
-  <a href="{% url 'pasajero-delete' pk=pasajero.pk %}" class="btn btn-danger">Eliminar</a>
+  <a class='btn btn-warning' href="{% url 'pasajero-update' pk=pasajero.pk %}" class="btn btn-warning">Editar</a>
+  <a class='btn btn-danger' href="{% url 'pasajero-delete' pk=pasajero.pk %}" class="btn btn-danger">Eliminar</a>
 
-  <a href="{% url 'pasajero-list' %}" class="btn btn-primary">Volver a la lista de pasajeros</a>
+  <a class='btn btn-secondary' href="{% url 'pasajero-list' %}" class="btn btn-primary">Volver a la lista de pasajeros</a>
 {% endblock %}

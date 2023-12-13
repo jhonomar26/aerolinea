@@ -1,36 +1,115 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container mt-5">
-    <h2>Actualizar Vuelo</h2>
-    <form method="post" action="{% url 'vuelo-update' vuelo.pk %}" class="needs-validation" novalidate>
-      {% csrf_token %}
+  
+<div class="container mt-4">
+  <!DOCTYPE html> 
+  <html lang="es"> 
 
-      <div class="mb-3">
-        <label for="{{ form.numero_vuelo.id_for_label }}" class="form-label">Número de Vuelo:</label>
-        {{ form.numero_vuelo }}
-        <div class="invalid-feedback">{{ form.numero_vuelo.errors }}</div>
+  <head> 
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+    <title>Editar Vuelos </title> 
+    <link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity= "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous" /> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+        <style type="text/css">
+
+          body{
+            font-family: Verdana, Tahoma, sans-serif;
+            background-image: linear-gradient(to right, rgba(220, 33, 20, 0.5), rgb(17, 54, 71));
+          }
+          .caja{                  
+            background-color: rgba(0, 0, 0, 0.315);
+            padding: 15px;
+            border-radius: 15px;   
+          } 
+          .form-group{
+            box-shadow: 6px 20px 10px black;
+          }
+          .sombra{
+            box-shadow: 7px 9px 15px black inset;
+          }
+          fieldset{
+            border: 3px solid rgba(154, 30, 255, 0.911);
+          }
+          legend{
+            border: 1px solid rgba(238, 224, 237, 0.384);
+            padding: 10px;
+            text-align: center;
+            background-color: rgba(245, 248, 248, 0.788);
+            border-radius: 8px; 
+          }
+          .inputBox{
+            position: relative;
+          }
+
+        </style>
+
+</head> 
+
+<body>
+  <div class="container">
+    <div class="caja">
+         
+        <form method="post" action="{% url 'vuelo-update' vuelo.pk %}" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <fieldset>
+          <legend><b>Editando Vuelo</b></legend>
+          <div class="text-center">
+            <img src="https://st4.depositphotos.com/4312111/27364/i/450/depositphotos_273644238-stock-photo-airplane-taking-off-from-the.jpg" class="rounded" alt="...">
+          </div><br>
+          <br>
+       <div class="text-center">
+          <div class="mb-3">
+          <label for="{{ form.numero_vuelo.id_for_label }}" class="form-label"><i class="fas fa-hashtag"></i> Número de Vuelo: </label>
+          {{ form.numero_vuelo }}
+          <div class="invalid-feedback">{{ form.numero_vuelo.errors }}</div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="{{ form.origen.id_for_label }}" class="form-label"> <i class="fas fa-plane"></i> Origen:</label>
+          {{ form.origen }}
+          <div class="invalid-feedback">{{ form.origen.errors }}</div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="{{ form.destino.id_for_label }}" class="form-label"> <i class="fas fa-plane"></i> Destino:</label>
+          {{ form.destino }}
+          <div class="invalid-feedback">{{ form.destino.errors }}</div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="{{ form.cod_aeropuerto.id_for_label }}" class="form-label"> <i class="fas fa-hashtag"></i> Aeropuerto:</label>
+          {{ form.cod_aeropuerto }}
+          <div class="invalid-feedback">{{ form.cod_aeropuerto.errors }}</div>
+        </div>
+  
       </div>
 
-      <div class="mb-3">
-        <label for="{{ form.origen.id_for_label }}" class="form-label">Origen:</label>
-        {{ form.origen }}
-        <div class="invalid-feedback">{{ form.origen.errors }}</div>
+        <div class="col-sm-15 offset-sm-4">
+          <button type="submit" class="btn btn-success">Editar</button>
+          <a class='btn btn-danger' href="{% url 'vuelo-list' %}">Cancelar</a>
+        </div> <br>
       </div>
+      
+      <br>
+    </fieldset>
+      
+      </form>
 
-      <div class="mb-3">
-        <label for="{{ form.destino.id_for_label }}" class="form-label">Destino:</label>
-        {{ form.destino }}
-        <div class="invalid-feedback">{{ form.destino.errors }}</div>
-      </div>
+    </div>  
 
-      <div class="mb-3">
-        <label for="{{ form.cod_aeropuerto.id_for_label }}" class="form-label">Aeropuerto:</label>
-        {{ form.cod_aeropuerto }}
-        <div class="invalid-feedback">{{ form.cod_aeropuerto.errors }}</div>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Guardar cambios</button>
-    </form>
   </div>
+</body> 
+
+</html> 
+    
+    
+  </div>
+
 {% endblock %}

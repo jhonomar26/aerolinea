@@ -3,17 +3,23 @@
 {% load static %}
 
 {% block section %}
-   <h2>
+<div class="text-center">
+  <h1>Bienvenido a la sección Detalles de los Vuelos </h1> 
+
+</div><br>
+
+<h2>
      <p>Vuelo de   {{ object.origen }}  a  {{ object.destino }}</p>
+     <p>Número de Vuelo: {{ object.numero_vuelo }} </p>
        {% if object.vuelo_id %}
          ( <a href="{% url "vuelo-detail" object.vuelo_id %}">
              {{ object.vuelo }}
            </a> )
        {% endif %}
     </h2>
-    <a href="{% url "vuelo-update" object.id %}">edit</a>
-    <a href="{% url "vuelo-delete" object.id %}">delete</a> 
-    <a href="{% url "vuelo-create" }">create</a> 
+    <a class='btn btn-warning' href="{% url "vuelo-update" object.id %}">Editar</a>
+    <a class='btn btn-danger' href="{% url "vuelo-delete" object.id %}">Borrar</a> 
+    <a class='btn btn-secondary' href="{% url 'vuelo-list' %}" class="btn btn-primary">Volver a la lista de vuelos</a>
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
    <hr>
 {% endblock section %}
