@@ -15,16 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from gestionPasajeros import views
 
 from django.urls import path
 from django.views import *
 
+from rest_framework import routers # importamos routers
+#Routers o enlaces a la Appi
+router = routers.DefaultRouter()
+router.register(r'aeropuerto_rest', views.AeropuertoViewSet)# Cuando utilice la ruta aeropuerto_rest vaya a ese views
+router.register(r'vuelo_rest', views.VueloViewSet)
+router.register(r'pasajero_rest', views.PasajeroViewSet)
 
 urlpatterns = [
     # ruta home
-    path("", views.home, name="ruta-home"),
+   # path("", views.home, name="ruta-home"),
     # ruta Admin
     path("admin/", admin.site.urls),
   
@@ -87,4 +93,10 @@ urlpatterns = [
         views.PasajeroDetailView.as_view(template_name="pasajero_detail.html"),
         name="pasajero-detail",
     ),
+
+    #Definición de routers, rutas de los serializers que se crearon
+    
+    path('', include(router.urls)),
+    path('api/', include('rest_framework.urls', namespace='rest_framework')),
+
 ]

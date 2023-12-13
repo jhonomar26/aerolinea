@@ -11,6 +11,8 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .forms import *
 
+from rest_framework import viewsets
+from .serializers import AeropuertoSerializer, VueloSerializer, PasajeroSerializer # Del archivo serializers que se creo importo las 3 clases que se crearon
 
 # Create your views here.
 
@@ -161,4 +163,19 @@ class PasajeroDelete(DeleteView):
     model = Pasajero
 
 
+#Vistas necesarias deacuerdo a las rutas para la Appi
+
+class AeropuertoViewSet(viewsets.ModelViewSet):
+    queryset = Aeropuerto.objects.all().order_by('nombre') #Consulta, traer toda la información y ordenado por nombre
+
+    serializer_class = AeropuertoSerializer
+
+
+class VueloViewSet(viewsets.ModelViewSet):
+    queryset = Vuelo.objects.all()
+    serializer_class = VueloSerializer
+
+class PasajeroViewSet(viewsets.ModelViewSet):
+    queryset = Pasajero.objects.all()
+    serializer_class = PasajeroSerializer
 
