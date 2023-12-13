@@ -25,62 +25,52 @@ from django.views import *
 urlpatterns = [
     # ruta home
     path("", views.home, name="ruta-home"),
+    # ruta Admin
     path("admin/", admin.site.urls),
-    # ruta crear aeropuerto
-    # ruta crear vuelo
-    # ruta crear pasajero
+  
+    #----------------------------AEROPUERTOS-----------------------
     # Update aeropuerto
-    path(
-        "aeropuerto/<int:pk>/update/",
-        views.AeropuertoUpdate.as_view(),
-        name="aeropuerto-update",
-    ),
+    path("aeropuerto/<int:pk>/update/", views.AeropuertoUpdate.as_view(), name="aeropuerto-update"),
     # Create aeropuerto
     path("aeropuerto/create/", views.crear_aeropuerto, name="aeropuerto-create"),
-    # Delete aeropuerto
+    # Lista aeropuerto
     path("aeropuerto/", views.AeropuertoListView.as_view(), name="aeropuerto-list"),
-    path(
-        "aeropuerto/<int:pk>/detail/",
-        views.AeropuertoDetailView.as_view(),
-        name="aeropuerto-detail",
-    ),
+    # Detalle aeropuerto
+    path("aeropuerto/<int:pk>/detail/", views.AeropuertoDetailView.as_view(), name="aeropuerto-detail"),
+    # Crear Aeropuerto
     path("aeropuerto/crear/", views.crear_aeropuerto, name="crear-aeropuerto"),
-    path(
-        "aeropuerto/<int:pk>/delete/",
-        views.AeropuertoDelete.as_view(),
-        name="aeropuerto-delete",
-    ),
+    # Delete Aeropuerto
+    path("aeropuerto/<int:pk>/delete/", views.AeropuertoDelete.as_view(), name="aeropuerto-delete"),
+    
+    #------------------------VUELOS-------------------------------
+
     # Update vuelo
     path("vuelo/<int:pk>/update/", views.VueloUpdate.as_view(), name="vuelo-update"),
     # Create vuelo
     path("vuelo/create/", views.crear_vuelo, name="vuelo-create"),
     # Delete vuelo
     path("vuelo/<int:pk>/delete/", views.VueloDelete.as_view(), name="vuelo-delete"),
+    #Vuelo Lista
     path("vuelo/", views.VueloListView.as_view(), name="vuelo-list"),
-    path(
-        "vuelo/<int:pk>/detail/", views.VueloDetailView.as_view(), name="vuelo-detail"
-    ),
+    # Vuelo Detalle
+    path("vuelo/<int:pk>/detail/", views.VueloDetailView.as_view(), name="vuelo-detail"),
+    # Vuelo Crear
     path("vuelo/crear/", views.crear_vuelo, name="crear-vuelo"),
+
+   #-----------------------------PASAJEROS---------------------------
+   
     # Update pasajero
-    path(
-        "pasajero/<int:pk>/update/",
-        views.PasajeroUpdate.as_view(),
-        name="pasajero-update",
-    ),
+    path("pasajero/<int:pk>/update/", views.PasajeroUpdate.as_view(), name="pasajero-update"),
     # Create pasajero
-    path("pasajero/create/", views.PasajeroCreate.as_view(), name="pasajero-create"),
+
+    path("pasajero/create/", views.crear_pasajero, name="pasajero-create"),
+    
     # Delete pasajero
-    path(
-        "pasajero/<int:pk>/delete/",
-        views.PasajeroDelete.as_view(),
-        name="pasajero-delete",
-    ),
+    path("pasajero/<int:pk>/delete/", views.PasajeroDelete.as_view(), name="pasajero-delete" ),
+    # Pasajero crear
     path("pasajero/crear/", views.crear_pasajero, name="crear-pasajero"),
-    # Pasajero
+    # Pasajero list
     path("pasajero/", views.PasajeroListView.as_view(), name="pasajero-list"),
-    path(
-        "pasajero/<int:pk>/detail/",
-        views.PasajeroDetailView.as_view(),
-        name="pasajero-detail",
-    ),
+    # Pasajero dettalle
+    path("pasajero/<int:pk>/detail/", views.PasajeroDetailView.as_view(), name="pasajero-detail"),
 ]
