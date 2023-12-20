@@ -7,19 +7,22 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
+    depends_on:
+      - postgres
   
   postgres:
-    image: postgres
+    image: postgres:13
+    #volumes:
+     # - postgres_data:/var/lib/postgresql/data/
     restart: always #para reiniciar el servidor de la base de datos por si acaso falla
     ports:
       - "5432:5432"
     environment:
-      - DATABASE_HOST=127.0.0.1
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=felipe1
-      - POSTGRES_DB=aeropuerto
-
-
+      #- DATABASE_HOST=postgres
+      ##- POSTGRES_USER=postgres
+      #- POSTGRES_PASSWORD=felipe1
+      #- POSTGRES_DB=aeropuerto
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
   pgadmin: #para administrar la base de datos es una interfaz web para controlar la instancia de postgres
     image: dpage/pgadmin4
     environment:
