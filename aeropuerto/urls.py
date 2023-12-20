@@ -22,7 +22,8 @@ from django.urls import path
 from django.views import *
 
 from rest_framework import routers # importamos routers
-#Routers o enlaces a la Appi
+
+#Creamos Routers o enlaces a la Appi
 router = routers.DefaultRouter()
 router.register(r'aeropuerto_rest', views.AeropuertoViewSet)# Cuando utilice la ruta aeropuerto_rest vaya a ese views
 router.register(r'vuelo_rest', views.VueloViewSet)
