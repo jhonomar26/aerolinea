@@ -31,7 +31,8 @@ router.register(r'pasajero_rest', views.PasajeroViewSet)
 
 urlpatterns = [
     # ruta home
-   # path("", views.home, name="ruta-home"),
+    path("home/", views.home, name="ruta-home"),
+   # path("/", views.home, name="ruta-home"),
     # ruta Admin
     path("admin/", admin.site.urls),
   
@@ -97,7 +98,7 @@ urlpatterns = [
 
     #Definición de routers, rutas de los serializers que se crearon
     
-    path('', include(router.urls)),
+   path('', include(router.urls)),
    path('api/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]

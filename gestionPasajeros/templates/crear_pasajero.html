@@ -62,7 +62,9 @@
           </div><br>
           <div class="text-center"> 
           {% csrf_token %}
-          {{ form.as_p }}
+         
+              {{ form.as_p }}
+      
           <div style='text-align:center'>
             <button type="submit" class="btn btn-primary">Crear</button>
             <a class='btn btn-secondary' href="{% url 'pasajero-list' %}">Cancelar</a>
