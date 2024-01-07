@@ -11,18 +11,20 @@ services:
       - postgres
   
   postgres:
-    image: postgres:13
+    image: postgres
     #volumes:
      # - postgres_data:/var/lib/postgresql/data/
     restart: always #para reiniciar el servidor de la base de datos por si acaso falla
+    
+    environment:
+      - DATABASE_HOST=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=felipe1
+      - POSTGRES_DB=aeropuerto
+
     ports:
       - "5432:5432"
-    environment:
-      #- DATABASE_HOST=postgres
-      ##- POSTGRES_USER=postgres
-      #- POSTGRES_PASSWORD=felipe1
-      #- POSTGRES_DB=aeropuerto
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      #- "POSTGRES_HOST_AUTH_METHOD=trust"
   pgadmin: #para administrar la base de datos es una interfaz web para controlar la instancia de postgres
     image: dpage/pgadmin4
     environment:
