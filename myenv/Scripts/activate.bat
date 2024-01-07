@@ -1,4 +1,4 @@
-@set "VIRTUAL_ENV=D:\Disco Local\0Stiiven\U\Semestr 8\Desarrollo WEB\Proyectos\Git aeropuerto 3\aerolinea\myenv"
+@set "VIRTUAL_ENV=D:\Disco Local\0Stiiven\U\Semestr 8\Desarrollo WEB\Proyectos\Git aeropuerto\aerolinea\myenv"
 
 @set "VIRTUAL_ENV_PROMPT="
 @if NOT DEFINED VIRTUAL_ENV_PROMPT (
