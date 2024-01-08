@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "gestionPasajeros",
     'rest_framework',
+    # Local
+    "accounts.apps.AccountsConfig", # new
    # "crispy_forms",
 ]
+AUTH_USER_MODEL = "accounts.CustomUser" # new
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
@@ -81,7 +84,7 @@ WSGI_APPLICATION = "aeropuerto.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": "aeropuerto",
         "USER": "postgres",
         "PASSWORD": "felipe1",
