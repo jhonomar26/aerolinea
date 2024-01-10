@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# django_project/settings.py
+ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -43,6 +45,9 @@ INSTALLED_APPS = [
     'rest_framework',
     # Local
     "accounts.apps.AccountsConfig", # new
+    "todos.apps.TodosConfig", 
+    "corsheaders",
+    "whitenoise.runserver_nostatic",  # nuevo
    # "crispy_forms",
 ]
 AUTH_USER_MODEL = "accounts.CustomUser" # new
@@ -51,12 +56,25 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",  # nuevo
+    "whitenoise.middleware.WhiteNoiseMiddleware", 
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+STATICFILES_DIRS = [BASE_DIR / "static"]  # nuevo
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # nuevo
+
+STATIC_ROOT = BASE_DIR / "staticfiles"  # nuevo
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
+# django_project/settings.py
+CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
 
 ROOT_URLCONF = "aeropuerto.urls"
 
@@ -88,8 +106,8 @@ DATABASES = {
         "NAME": "aeropuerto",
         "USER": "postgres",
         "PASSWORD": "felipe1",
-        "HOST": "postgres",
-        "PORT": "5432",
+        "HOST": "localhost",
+        "PORT": "",
 
 
     }
@@ -141,3 +159,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "media"),)
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# django_project/settings.py
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+}

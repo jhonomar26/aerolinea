@@ -4,6 +4,7 @@ from django.test import TestCase
 
 
 class CustomUserTests(TestCase):
+    #Se confirma que se crea un nuevo usuario
     def test_create_user(self):
         User = get_user_model()
         user = User.objects.create_user(

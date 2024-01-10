@@ -8,16 +8,16 @@ services:
     volumes:
       - .:/code
     depends_on:
-      - postgres
+      - db
   
-  postgres:
+  db:
     image: postgres
     #volumes:
      # - postgres_data:/var/lib/postgresql/data/
     restart: always #para reiniciar el servidor de la base de datos por si acaso falla
     
     environment:
-      - DATABASE_HOST=postgres
+      - DATABASE_HOST=db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=felipe1
       - POSTGRES_DB=aeropuerto
@@ -33,6 +33,6 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - postgres
+      - db
 volumes:
   postgres_data:
