@@ -6,10 +6,23 @@ from django.views.generic import (
     ListView,
     DetailView,
 )
+from django.contrib.auth.views import (
+    LoginView,
+    LogoutView,
+    PasswordChangeView,
+    PasswordChangeDoneView,
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+    
+)
+
 from gestionPasajeros.models import Aeropuerto, Vuelo, Pasajero
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .forms import *
+
 
 from rest_framework import viewsets
 from .serializers import AeropuertoSerializer, VueloSerializer, PasajeroSerializer # Del archivo serializers que se creo importo las 3 clases que se crearon

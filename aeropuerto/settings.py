@@ -43,10 +43,13 @@ INSTALLED_APPS = [
     'rest_framework',
     # Local
     "accounts.apps.AccountsConfig", # new
+    "pages.apps.PagesConfig",
    # "crispy_forms",
 ]
 AUTH_USER_MODEL = "accounts.CustomUser" # new
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+LOGIN_REDIRECT_URL = "ruta-home"
+LOGOUT_REDIRECT_URL = "ruta-home"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -88,7 +91,7 @@ DATABASES = {
         "NAME": "aeropuerto",
         "USER": "postgres",
         "PASSWORD": "felipe1",
-        "HOST": "postgres",
+        "HOST": "localhost",
         "PORT": "5432",
 
 
