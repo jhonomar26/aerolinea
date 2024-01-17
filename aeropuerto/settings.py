@@ -77,7 +77,7 @@ CORS_ALLOWED_ORIGINS = (
 )
 
 # django_project/settings.py
-CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
+#CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
 
 ROOT_URLCONF = "aeropuerto.urls"
 
