@@ -46,6 +46,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
+    
    # path("/", views.home, name="ruta-home"),
     # ruta Admin
     path("admin/", admin.site.urls),
@@ -115,5 +116,6 @@ urlpatterns = [
    path('', include(router.urls)),
    path('api/', include('rest_framework.urls', namespace='rest_framework')),
    
+   path("api/", include("todos.urls")),  # nuevo
 
 ]
