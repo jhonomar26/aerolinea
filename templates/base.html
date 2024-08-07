@@ -1,15 +1,21 @@
+{% comment %}Este es el archivo base.html{% endcomment %}
 {% extends 'adminlte/base.html' %}
 
-{% block title %}Aeropuertos Colombia{% endblock %}
-{% block bodyclass %} skin-red {% endblock %}
+{% block title %}
+  Aeropuertos Colombia
+{% endblock %}
+{% block bodyclass %}
+  skin-red
+{% endblock %}
 {% block content %}
-    <div class="container">
-        {% block section %}
-        {% endblock section %}
-    </div>
-    <div class="container">
-        {% block maincontent %}
-        {% endblock maincontent %}
-    </div>
-  
+  <div class="container">
+    {% block section %}
+
+    {% endblock %}
+  </div>
+  <div class="container">
+    {% block maincontent %}
+
+    {% endblock %}
+  </div>
 {% endblock %}
